@@ -27,14 +27,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuOverlay = document.getElementById('menuOverlay');
 
   function openMenu(){
-    mobileMenu.classList.add('open');
-    menuOverlay.classList.add('show');
+    mobileMenu.classList.remove('translate-x-full');
+    mobileMenu.classList.add('translate-x-0', 'open');
+    menuOverlay.classList.remove('hidden');
+    menuOverlay.classList.add('flex');
     menuBtn.setAttribute('aria-expanded','true');
     document.body.style.overflow = 'hidden';
   }
   function closeMenu(){
-    mobileMenu.classList.remove('open');
-    menuOverlay.classList.remove('show');
+    mobileMenu.classList.add('translate-x-full');
+    mobileMenu.classList.remove('translate-x-0', 'open');
+    menuOverlay.classList.add('hidden');
+    menuOverlay.classList.remove('flex');
     menuBtn.setAttribute('aria-expanded','false');
     document.body.style.overflow = '';
   }
@@ -44,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menuOverlay.addEventListener('click', closeMenu);
     document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) closeMenu();
     });
   }
 
