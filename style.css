@@ -15,12 +15,13 @@
   --cream:#F3EFE6;
 }
 
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; overflow-x:hidden; width:100%; }
 body{
   font-family:'Poppins',sans-serif;
   background:var(--black);
   color:var(--cream);
   overflow-x:hidden;
+  width:100%;
 }
 h1,h2,h3,h4,.font-display{ font-family:'Playfair Display',serif; }
 
@@ -55,16 +56,8 @@ h1,h2,h3,h4,.font-display{ font-family:'Playfair Display',serif; }
 .reveal.in-view{ opacity:1; transform:translateY(0); }
 
 /* ---------- glass navbar ---------- */
-/* ---------- Luxury Navbar ---------- */
-.glass{
-    background: rgba(19,22,19,0.94);   /* subtle charcoal green */
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+.glass{ background:rgba(10,10,10,0.82); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(201,162,75,0.12); }
 
-    border-bottom: 1px solid rgba(201,162,75,0.10);
-
-    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
-}
 /* ---------- gradients ---------- */
 .hero-gradient{ background:linear-gradient(180deg, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0.6) 55%, rgba(10,10,10,0.96) 100%); }
 .emerald-gradient{ background:linear-gradient(135deg, var(--emerald-deep) 0%, #0a0a0a 70%); }
@@ -118,8 +111,24 @@ h1,h2,h3,h4,.font-display{ font-family:'Playfair Display',serif; }
 #backToTop.show{ opacity:1; visibility:visible; transform:translateY(0); }
 
 /* ---------- mobile menu ---------- */
-#mobileMenu{ transform:translateX(100%); transition:transform .5s cubic-bezier(.22,1,.36,1); }
+#mobileMenu{
+  transform:translateX(100%);
+  transition:transform .5s cubic-bezier(.22,1,.36,1);
+  padding-bottom:env(safe-area-inset-bottom);
+}
 #mobileMenu.open{ transform:translateX(0); }
+#mobileMenu .mobile-link{ -webkit-tap-highlight-color:transparent; }
+
+/* ---------- mobile menu overlay (dark, blurred, fades in/out) ---------- */
+#menuOverlay{
+  background:rgba(5,5,5,0.7);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .45s ease, visibility .45s ease;
+}
+#menuOverlay.show{ opacity:1; visibility:visible; }
 
 /* ---------- lightbox ---------- */
 #lightbox{ background:rgba(5,5,5,0.96); }
