@@ -107,7 +107,7 @@
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold focus:text-ink focus:px-4 focus:py-2 focus:rounded-full">Skip to main content</a>
 
 <!-- ============================= NAVBAR ============================= -->
-<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-emerald-deep/95 backdrop-blur-md border-b border-gold/10">
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-6 lg:px-10 py-3 sm:py-4" aria-label="Main navigation">
     <a href="#hero" class="leading-none">
       <span class="font-display text-lg sm:text-xl md:text-2xl tracking-[0.15em] text-white block">THE <span class="text-gold">COLOR</span> BAR</span>
@@ -137,7 +137,7 @@
 </header>
 
 <!-- ============================= MOBILE MENU ============================= -->
-<div id="mobileMenu" class="fixed top-0 right-0 h-full w-[88%] max-w-sm bg-ink z-50 lg:hidden shadow-2xl border-l border-gold/10 flex flex-col" role="dialog" aria-modal="true" aria-label="Mobile menu">
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-[88%] max-w-sm bg-ink z-50 lg:hidden shadow-2xl border-l border-gold/10 flex flex-col transform translate-x-full transition-transform duration-500 ease-out" role="dialog" aria-modal="true" aria-label="Mobile menu">
   <div class="flex items-center justify-between px-8 pt-8 pb-5 shrink-0">
     <span class="font-display text-base tracking-[0.2em] text-white">THE <span class="text-gold">COLOR</span> BAR</span>
     <button id="closeMenuBtn" aria-label="Close menu" class="text-white/80 hover:text-gold transition p-2 -mr-2">
@@ -162,7 +162,7 @@
     <a href="https://wa.me/94741587300" target="_blank" rel="noopener" class="btn-gold text-center py-3.5 rounded-full text-sm tracking-wide uppercase flex items-center justify-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp Us</a>
   </div>
 </div>
-<div id="menuOverlay" class="fixed inset-0 z-40 lg:hidden"></div>
+<div id="menuOverlay" class="fixed inset-0 z-40 lg:hidden hidden bg-black/70 backdrop-blur-sm"></div>
 
 <main id="main">
 
