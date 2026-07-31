@@ -55,8 +55,8 @@ h1,h2,h3,h4,.font-display{ font-family:'Playfair Display',serif; }
 .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
 .reveal.in-view{ opacity:1; transform:translateY(0); }
 
-/* ---------- glass navbar ---------- */
-.glass{ background:rgba(10,10,10,0.82); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid rgba(201,162,75,0.12); }
+/* ---------- glass navbar (scrolled state — deepens the emerald tone) ---------- */
+.glass{ background:rgba(8,42,29,0.97); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-bottom:1px solid rgba(201,162,75,0.18); box-shadow:0 8px 30px -14px rgba(0,0,0,0.55); }
 
 /* ---------- gradients ---------- */
 .hero-gradient{ background:linear-gradient(180deg, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0.6) 55%, rgba(10,10,10,0.96) 100%); }
@@ -110,25 +110,15 @@ h1,h2,h3,h4,.font-display{ font-family:'Playfair Display',serif; }
 #backToTop{ opacity:0; visibility:hidden; transform:translateY(12px); transition:all .35s ease; }
 #backToTop.show{ opacity:1; visibility:visible; transform:translateY(0); }
 
-/* ---------- mobile menu ---------- */
-#mobileMenu{
-  transform:translateX(100%);
-  transition:transform .5s cubic-bezier(.22,1,.36,1);
-  padding-bottom:env(safe-area-inset-bottom);
-}
-#mobileMenu.open{ transform:translateX(0); }
+/* ---------- mobile menu ----------
+   Open/close visibility is handled by Tailwind utility classes
+   (translate-x-full / translate-x-0, hidden / flex) toggled in main.js.
+   Only non-conflicting supplementary styling lives here. */
+#mobileMenu{ padding-bottom:env(safe-area-inset-bottom); }
 #mobileMenu .mobile-link{ -webkit-tap-highlight-color:transparent; }
 
-/* ---------- mobile menu overlay (dark, blurred, fades in/out) ---------- */
-#menuOverlay{
-  background:rgba(5,5,5,0.7);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  opacity:0;
-  visibility:hidden;
-  transition:opacity .45s ease, visibility .45s ease;
-}
-#menuOverlay.show{ opacity:1; visibility:visible; }
+/* ---------- mobile menu overlay (dark, blurred) ---------- */
+#menuOverlay.flex{ align-items:stretch; }
 
 /* ---------- lightbox ---------- */
 #lightbox{ background:rgba(5,5,5,0.96); }
