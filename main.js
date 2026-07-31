@@ -12,13 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- Sticky navbar background on scroll ---------- */
-  const navbar = document.getElementById('navbar');
-  function updateNavbar(){
+ function updateNavbar(){
     if (!navbar) return;
-    navbar.classList.toggle('glass', window.scrollY > 40);
-  }
-  window.addEventListener('scroll', updateNavbar);
-  updateNavbar();
+    navbar.classList.add('glass');
+}
 
   /* ---------- Mobile menu ---------- */
   const menuBtn = document.getElementById('menuBtn');
