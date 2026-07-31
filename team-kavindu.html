@@ -58,10 +58,10 @@
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-gold focus:text-ink focus:px-4 focus:py-2 focus:rounded-full">Skip to main content</a>
 
 <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 glass">
-  <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 py-4" aria-label="Main navigation">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-6 lg:px-10 py-3 sm:py-4" aria-label="Main navigation">
     <a href="index.html#hero" class="leading-none">
-      <span class="font-display text-xl md:text-2xl tracking-[0.15em] text-white block">THE <span class="text-gold">COLOR</span> BAR</span>
-      <span class="block text-[10px] tracking-[0.35em] text-white/50 mt-1">GALLE &middot; SRI LANKA</span>
+      <span class="font-display text-lg sm:text-xl md:text-2xl tracking-[0.15em] text-white block">THE <span class="text-gold">COLOR</span> BAR</span>
+      <span class="block text-[9px] sm:text-[10px] tracking-[0.22em] sm:tracking-[0.35em] text-white/50 mt-1">GALLE &middot; SRI LANKA</span>
     </a>
     <ul class="hidden lg:flex items-center gap-9 text-xs tracking-[0.15em] text-white/85 uppercase">
       <li><a href="index.html#about" class="link-underline">About</a></li>
@@ -76,29 +76,37 @@
       </a>
       <a href="https://wa.me/94741587300" target="_blank" rel="noopener" class="btn-gold px-5 py-2.5 rounded-full text-xs tracking-wide font-medium uppercase">WhatsApp Us</a>
     </div>
-    <button id="menuBtn" class="lg:hidden text-white" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <button id="menuBtn" class="lg:hidden text-white p-2 -mr-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <i data-lucide="menu" class="w-7 h-7"></i>
     </button>
   </nav>
 </header>
 
-<div id="mobileMenu" class="fixed top-0 right-0 h-full w-[78%] max-w-sm bg-ink z-50 lg:hidden shadow-2xl border-l border-gold/10" role="dialog" aria-modal="true" aria-label="Mobile menu">
-  <div class="flex justify-end p-6">
-    <button id="closeMenuBtn" aria-label="Close menu" class="text-white"><i data-lucide="x" class="w-7 h-7"></i></button>
+<div id="mobileMenu" class="fixed top-0 right-0 h-full w-[88%] max-w-sm bg-ink z-50 lg:hidden shadow-2xl border-l border-gold/10 flex flex-col" role="dialog" aria-modal="true" aria-label="Mobile menu">
+  <div class="flex items-center justify-between px-8 pt-8 pb-5 shrink-0">
+    <span class="font-display text-base tracking-[0.2em] text-white">THE <span class="text-gold">COLOR</span> BAR</span>
+    <button id="closeMenuBtn" aria-label="Close menu" class="text-white/80 hover:text-gold transition p-2 -mr-2">
+      <i data-lucide="x" class="w-7 h-7"></i>
+    </button>
   </div>
-  <ul class="flex flex-col gap-7 px-10 text-lg text-white font-display">
-    <li><a href="index.html#about" class="mobile-link">About</a></li>
-    <li><a href="index.html#services" class="mobile-link">Services</a></li>
-    <li><a href="index.html#team" class="mobile-link">Team</a></li>
-    <li><a href="index.html#gallery" class="mobile-link">Gallery</a></li>
-    <li><a href="index.html#contact" class="mobile-link">Contact</a></li>
-  </ul>
-  <div class="px-10 mt-10 flex flex-col gap-4">
-    <a href="tel:+94741587300" class="btn-outline text-center py-3 rounded-full">Call Now</a>
-    <a href="https://wa.me/94741587300" target="_blank" rel="noopener" class="btn-gold text-center py-3 rounded-full">WhatsApp Us</a>
+  <div class="gold-rule mx-8 mb-2 shrink-0"></div>
+
+  <nav class="flex-1 overflow-y-auto px-8 py-5" aria-label="Mobile navigation">
+    <ul class="flex flex-col font-display">
+      <li><a href="index.html#about" class="mobile-link flex items-center gap-4 py-4 text-2xl text-white hover:text-gold transition border-b border-white/5"><span class="text-xs text-gold/70 font-body tracking-widest">01</span>About</a></li>
+      <li><a href="index.html#services" class="mobile-link flex items-center gap-4 py-4 text-2xl text-white hover:text-gold transition border-b border-white/5"><span class="text-xs text-gold/70 font-body tracking-widest">02</span>Services</a></li>
+      <li><a href="index.html#team" class="mobile-link flex items-center gap-4 py-4 text-2xl text-white hover:text-gold transition border-b border-white/5"><span class="text-xs text-gold/70 font-body tracking-widest">03</span>Team</a></li>
+      <li><a href="index.html#gallery" class="mobile-link flex items-center gap-4 py-4 text-2xl text-white hover:text-gold transition border-b border-white/5"><span class="text-xs text-gold/70 font-body tracking-widest">04</span>Gallery</a></li>
+      <li><a href="index.html#contact" class="mobile-link flex items-center gap-4 py-4 text-2xl text-white hover:text-gold transition"><span class="text-xs text-gold/70 font-body tracking-widest">05</span>Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="px-8 pb-8 pt-5 flex flex-col gap-3 border-t border-white/5 shrink-0">
+    <a href="tel:+94741587300" class="btn-outline text-center py-3.5 rounded-full text-sm tracking-wide uppercase flex items-center justify-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i> Call Now</a>
+    <a href="https://wa.me/94741587300" target="_blank" rel="noopener" class="btn-gold text-center py-3.5 rounded-full text-sm tracking-wide uppercase flex items-center justify-center gap-2"><i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp Us</a>
   </div>
 </div>
-<div id="menuOverlay" class="fixed inset-0 bg-black/60 z-40 hidden lg:hidden"></div>
+<div id="menuOverlay" class="fixed inset-0 z-40 lg:hidden"></div>
 
 <main id="main">
 
@@ -120,7 +128,7 @@
 </section>
 
 <!-- ============================= BIO ============================= -->
-<section class="bg-ink py-24 md:py-28">
+<section class="bg-ink py-16 sm:py-24 md:py-28">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-5 gap-14">
     <div class="reveal lg:col-span-2">
       <div class="rounded-3xl overflow-hidden shadow-2xl border border-gold/10">
@@ -167,7 +175,7 @@
 </section>
 
 <!-- ============================= GALLERY ============================= -->
-<section class="bg-charcoal py-24 md:py-28">
+<section class="bg-charcoal py-16 sm:py-24 md:py-28">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="reveal text-center max-w-2xl mx-auto mb-14">
       <p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">Portfolio</p>
@@ -184,7 +192,7 @@
 </div>
 
 <!-- ============================= ACHIEVEMENTS ============================= -->
-<section class="emerald-gradient py-24 md:py-28 relative overflow-hidden">
+<section class="emerald-gradient py-16 sm:py-24 md:py-28 relative overflow-hidden">
   <div class="absolute inset-0 texture-dots opacity-40"></div>
   <div class="max-w-5xl mx-auto px-6 lg:px-10 relative">
     <div class="reveal text-center max-w-2xl mx-auto mb-14">
@@ -202,7 +210,7 @@
 </section>
 
 <!-- ============================= CONTACT CTA ============================= -->
-<section class="bg-ink py-20 md:py-24">
+<section class="bg-ink py-14 sm:py-20 md:py-24">
   <div class="max-w-3xl mx-auto px-6 text-center reveal">
     <p class="text-gold tracking-[0.3em] text-xs uppercase mb-4">Book With Kavindu</p>
     <h2 class="font-display text-3xl md:text-4xl text-white mb-6">Ready for a Fresh, Effortless Look?</h2>
