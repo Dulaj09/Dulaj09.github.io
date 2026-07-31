@@ -12,10 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- Sticky navbar background on scroll ---------- */
- function updateNavbar(){
+  const navbar = document.getElementById('navbar');
+  function updateNavbar(){
     if (!navbar) return;
-    navbar.classList.add('glass');
-}
+    navbar.classList.toggle('glass', window.scrollY > 40);
+  }
+  window.addEventListener('scroll', updateNavbar);
+  updateNavbar();
 
   /* ---------- Mobile menu ---------- */
   const menuBtn = document.getElementById('menuBtn');
@@ -25,13 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function openMenu(){
     mobileMenu.classList.add('open');
-    menuOverlay.classList.remove('hidden');
+    menuOverlay.classList.add('show');
     menuBtn.setAttribute('aria-expanded','true');
     document.body.style.overflow = 'hidden';
   }
   function closeMenu(){
     mobileMenu.classList.remove('open');
-    menuOverlay.classList.add('hidden');
+    menuOverlay.classList.remove('show');
     menuBtn.setAttribute('aria-expanded','false');
     document.body.style.overflow = '';
   }
@@ -40,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
     closeMenuBtn.addEventListener('click', closeMenu);
     menuOverlay.addEventListener('click', closeMenu);
     document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+    });
   }
 
   /* ---------- Scroll reveal ---------- */
