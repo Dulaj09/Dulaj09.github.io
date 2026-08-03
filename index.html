@@ -1,0 +1,1399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Color Bar | Luxury Hair Salon in Galle, Sri Lanka</title>
+<meta name="description" content="The Color Bar is a luxury hair salon on Lighthouse Street, Galle — offering bespoke colour, cutting, treatments, and bridal styling from award-winning hair artists." />
+<meta name="theme-color" content="#0A4536" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          emerald: { DEFAULT: "#0F5E4A", deep: "#0A4536", light: "#146B54" },
+          gold: { DEFAULT: "#C9A227", light: "#E1C158", dark: "#A6841C" },
+          cream: "#FAF6EE",
+          charcoal: "#201F1D",
+        },
+        fontFamily: {
+          display: ["'Playfair Display'", "serif"],
+          body: ["'Inter'", "sans-serif"],
+        },
+        letterSpacing: { widest2: "0.28em" },
+        keyframes: {
+          "fade-up": { "0%": { opacity: "0", transform: "translateY(24px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
+          shimmer: { "0%": { backgroundPosition: "-200% 0" }, "100%": { backgroundPosition: "200% 0" } },
+          float: { "0%, 100%": { transform: "translateY(0px)" }, "50%": { transform: "translateY(-10px)" } },
+        },
+        animation: {
+          "fade-up": "fade-up 0.9s cubic-bezier(0.16,1,0.3,1) forwards",
+          shimmer: "shimmer 2.5s linear infinite",
+          float: "float 6s ease-in-out infinite",
+        },
+        maxWidth: { "8xl": "90rem" },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #FAF6EE; font-family: 'Inter', sans-serif; }
+  ::selection { background-color: #C9A227; color: #201F1D; }
+  .font-display { font-family: 'Playfair Display', serif; }
+
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid #C9A227; outline-offset: 3px;
+  }
+
+  [data-page] { display: none; }
+  [data-page].is-active { display: block; }
+
+  /* Scroll reveal */
+  [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+  [data-reveal].revealed { opacity: 1; transform: translateY(0); }
+
+  /* Color bar swatch reveal */
+  .swatch { transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+  .swatch.revealed { transform: scaleX(1); }
+
+  .masonry-col { column-gap: 0.75rem; }
+  @media (min-width: 640px) { .masonry-col { column-gap: 1rem; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+    .swatch { transform: scaleX(1) !important; }
+  }
+
+  .icon { display: inline-block; vertical-align: middle; }
+</style>
+</head>
+<body class="text-charcoal antialiased">
+
+<!-- ============ NAVBAR ============ -->
+<header id="navbar" class="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out bg-transparent">
+  <nav class="mx-auto flex max-w-8xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
+    <a href="#/" class="flex flex-col leading-none">
+      <span class="font-display text-xl tracking-wide text-cream sm:text-2xl">The Color Bar</span>
+      <span class="mt-0.5 text-[9px] uppercase tracking-widest2 text-gold-light">Galle, Sri Lanka</span>
+    </a>
+
+    <ul class="hidden items-center gap-9 lg:flex" id="nav-links-desktop">
+      <li><a data-route="/about" href="#/about" class="nav-link group relative text-[13px] font-medium uppercase tracking-[0.14em] text-cream/90 transition-colors hover:text-gold-light">About<span class="nav-underline absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-gold-light transition-transform duration-300 ease-out"></span></a></li>
+      <li><a data-route="/services" href="#/services" class="nav-link group relative text-[13px] font-medium uppercase tracking-[0.14em] text-cream/90 transition-colors hover:text-gold-light">Services<span class="nav-underline absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-gold-light transition-transform duration-300 ease-out"></span></a></li>
+      <li><a data-route="/artists" href="#/artists" class="nav-link group relative text-[13px] font-medium uppercase tracking-[0.14em] text-cream/90 transition-colors hover:text-gold-light">Hair Artists<span class="nav-underline absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-gold-light transition-transform duration-300 ease-out"></span></a></li>
+      <li><a data-route="/gallery" href="#/gallery" class="nav-link group relative text-[13px] font-medium uppercase tracking-[0.14em] text-cream/90 transition-colors hover:text-gold-light">Gallery<span class="nav-underline absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-gold-light transition-transform duration-300 ease-out"></span></a></li>
+      <li><a data-route="/testimonials" href="#/testimonials" class="nav-link group relative text-[13px] font-medium uppercase tracking-[0.14em] text-cream/90 transition-colors hover:text-gold-light">Testimonials<span class="nav-underline absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-gold-light transition-transform duration-300 ease-out"></span></a></li>
+      <li><a data-route="/contact" href="#/contact" class="nav-link group relative text-[13px] font-medium uppercase tracking-[0.14em] text-cream/90 transition-colors hover:text-gold-light">Contact<span class="nav-underline absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-gold-light transition-transform duration-300 ease-out"></span></a></li>
+    </ul>
+
+    <div class="hidden lg:block">
+      <a href="#/book-appointment" class="btn-primary group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-emerald px-7 py-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-500 ease-out hover:bg-emerald-deep">
+        <span class="relative z-10 flex items-center gap-2">Book Appointment
+          <svg class="icon transition-transform duration-500 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
+        <span class="absolute inset-0 -z-0 origin-left scale-x-0 bg-gold transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+      </a>
+    </div>
+
+    <button id="mobile-menu-toggle" aria-label="Open menu" class="flex h-11 w-11 items-center justify-center rounded-full text-cream lg:hidden">
+      <svg id="icon-menu" class="icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <svg id="icon-x" class="icon hidden" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </nav>
+
+  <div id="mobile-menu" class="hidden overflow-hidden bg-emerald-deep lg:hidden">
+    <ul class="flex flex-col gap-1 px-5 pb-6 pt-2 sm:px-8">
+      <li><a data-route="/about" href="#/about" class="mobile-nav-link block border-b border-cream/10 py-4 text-lg font-display text-cream active:text-gold-light">About</a></li>
+      <li><a data-route="/services" href="#/services" class="mobile-nav-link block border-b border-cream/10 py-4 text-lg font-display text-cream active:text-gold-light">Services</a></li>
+      <li><a data-route="/artists" href="#/artists" class="mobile-nav-link block border-b border-cream/10 py-4 text-lg font-display text-cream active:text-gold-light">Hair Artists</a></li>
+      <li><a data-route="/gallery" href="#/gallery" class="mobile-nav-link block border-b border-cream/10 py-4 text-lg font-display text-cream active:text-gold-light">Gallery</a></li>
+      <li><a data-route="/testimonials" href="#/testimonials" class="mobile-nav-link block border-b border-cream/10 py-4 text-lg font-display text-cream active:text-gold-light">Testimonials</a></li>
+      <li><a data-route="/contact" href="#/contact" class="mobile-nav-link block border-b border-cream/10 py-4 text-lg font-display text-cream active:text-gold-light">Contact</a></li>
+      <li class="pt-5"><a href="#/book-appointment" class="mobile-nav-link group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-emerald px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream"><span class="relative z-10">Book Appointment</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="app">
+
+<!-- ============ HOME PAGE ============ -->
+<section data-page="/" class="is-active">
+  <!-- Hero -->
+  <section class="relative flex min-h-[100svh] items-center overflow-hidden bg-emerald-deep pt-24 sm:pt-28">
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920&q=80&auto=format&fit=crop" alt="The Color Bar salon interior" class="h-full w-full object-cover opacity-40" />
+      <div class="absolute inset-0 bg-gradient-to-t from-emerald-deep via-emerald-deep/70 to-emerald-deep/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-emerald-deep/60 via-transparent to-transparent"></div>
+    </div>
+
+    <div aria-hidden class="absolute right-[8%] top-[22%] hidden h-24 w-24 rounded-full bg-gold/20 blur-xl animate-float sm:block"></div>
+    <div aria-hidden class="absolute bottom-[18%] right-[18%] hidden h-16 w-16 rounded-full bg-cream/10 blur-lg sm:block" style="animation-delay:1.5s"></div>
+
+    <div class="relative z-10 mx-auto w-full max-w-8xl px-5 pb-16 sm:px-8 lg:px-12">
+      <span data-reveal class="mb-6 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-light">Galle's Luxury Hair Studio</span>
+      <h1 data-reveal class="max-w-3xl font-display text-[2.6rem] leading-[1.05] text-cream sm:text-6xl md:text-7xl">Luxury Hair Experiences, <span class="italic text-gold-light">Crafted for You</span></h1>
+      <p data-reveal class="mt-6 max-w-md text-[15px] leading-relaxed text-cream/70 sm:text-lg">The Color Bar is a private studio on Lighthouse Street, Galle — where colour, cutting, and ritual come together for hair that feels entirely your own.</p>
+      <div data-reveal class="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+        <a href="#/book-appointment" class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-emerald px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-500 ease-out hover:bg-emerald-deep">
+          <span class="relative z-10 flex items-center gap-2">Book Appointment
+            <svg class="icon transition-transform duration-500 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+          <span class="absolute inset-0 -z-0 origin-left scale-x-0 bg-gold transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+        </a>
+        <a href="#/artists" class="group relative inline-flex items-center gap-2 !px-2 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-500 ease-out hover:text-gold">
+          <span class="relative z-10 flex items-center gap-2">Meet Our Artists
+            <svg class="icon transition-transform duration-500 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+        </a>
+      </div>
+      <div data-reveal class="mt-14 max-w-md sm:mt-20">
+        <div class="colorbar-slot"></div>
+        <p class="mt-3 text-[11px] uppercase tracking-widest2 text-cream/40">Every shade, hand-mixed at the bar</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro strip -->
+  <section class="bg-cream py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
+        <div data-reveal class="max-w-2xl">
+          <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Welcome to The Color Bar</span>
+          <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">A private studio, built entirely around your hair</h2>
+          <p class="mt-5 text-[15px] leading-relaxed text-charcoal/60 sm:text-base">Tucked into Galle Fort's Lighthouse Street, The Color Bar brings together master colourists and precision stylists in one calm, considered space — where every formula is mixed for you, and nothing feels rushed.</p>
+        </div>
+        <div data-reveal class="relative aspect-[4/3] overflow-hidden rounded-2xl lg:aspect-auto">
+          <img src="https://images.unsplash.com/photo-1522336572468-97b06e8ef143?w=1000&q=80&auto=format&fit=crop" alt="Inside The Color Bar salon" class="h-full w-full object-cover" />
+        </div>
+      </div>
+      <div data-reveal class="mt-14 colorbar-slot"></div>
+    </div>
+  </section>
+
+  <!-- Featured services -->
+  <section class="bg-white py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+        <div data-reveal class="max-w-2xl">
+          <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">What We Do</span>
+          <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">Signature services</h2>
+          <p class="mt-5 text-[15px] leading-relaxed text-charcoal/60 sm:text-base">From everyday cuts to editorial colour work, every service starts with a real consultation.</p>
+        </div>
+        <a href="#/services" class="btn-outline group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-charcoal/25 px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-charcoal transition-all duration-500 ease-out hover:border-emerald hover:text-emerald">
+          <span class="relative z-10 flex items-center gap-2">View All Services
+            <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+        </a>
+      </div>
+      <div id="home-services-grid" class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <!-- Featured artists -->
+  <section class="bg-cream py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+        <div data-reveal class="max-w-2xl">
+          <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Meet The Team</span>
+          <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">Our hair artists</h2>
+          <p class="mt-5 text-[15px] leading-relaxed text-charcoal/60 sm:text-base">Every artist at The Color Bar brings a distinct specialty — matched to you at booking.</p>
+        </div>
+        <a href="#/artists" class="btn-outline group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-charcoal/25 px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-charcoal transition-all duration-500 ease-out hover:border-emerald hover:text-emerald">
+          <span class="relative z-10 flex items-center gap-2">Meet Everyone
+            <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+        </a>
+      </div>
+      <div id="home-artists-grid" class="mt-12 grid grid-cols-2 gap-5 sm:gap-7 lg:grid-cols-4"></div>
+    </div>
+  </section>
+
+  <!-- Gallery preview -->
+  <section class="bg-white py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+        <div data-reveal><span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Our Work</span><h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">From the gallery</h2></div>
+        <a href="#/gallery" class="btn-outline group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-charcoal/25 px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-charcoal transition-all duration-500 ease-out hover:border-emerald hover:text-emerald">
+          <span class="relative z-10 flex items-center gap-2">Full Gallery
+            <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+        </a>
+      </div>
+      <div id="home-gallery-grid" class="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4"></div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-emerald-deep py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="mx-auto max-w-2xl text-center">
+        <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-light">Client Love</span>
+        <h2 class="font-display text-4xl leading-[1.1] text-cream sm:text-5xl md:text-6xl">Words from our guests</h2>
+      </div>
+      <div id="home-testimonials-grid" class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+      <div data-reveal class="mt-10 text-center">
+        <a href="#/testimonials" class="group relative inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-500 ease-out hover:text-gold">
+          <span class="relative z-10 flex items-center gap-2">Read All Reviews
+            <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram -->
+  <section class="bg-cream py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+        <div data-reveal><span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Follow Along</span><h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">@thecolorbar on Instagram</h2></div>
+        <a href="https://instagram.com/" class="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-emerald hover:text-gold-dark">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          Follow Us
+        </a>
+      </div>
+      <div id="home-instagram-grid" class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6"></div>
+    </div>
+  </section>
+
+  <!-- Map + CTA -->
+  <section class="bg-cream py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
+        <div data-reveal>
+          <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Visit The Studio</span>
+          <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl">Find us in Galle Fort</h2>
+          <p class="mt-5 max-w-md text-[15px] leading-relaxed text-charcoal/60">10 Lighthouse St, Galle 80000, Sri Lanka</p>
+          <div class="mt-8">
+            <a href="#/contact" class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-emerald px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-500 ease-out hover:bg-emerald-deep">
+              <span class="relative z-10 flex items-center gap-2">Get Directions
+                <svg class="icon transition-transform duration-500 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </span>
+              <span class="absolute inset-0 -z-0 origin-left scale-x-0 bg-gold transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+            </a>
+          </div>
+        </div>
+        <div data-reveal class="h-72 sm:h-80 lg:h-full">
+          <div class="google-map-slot h-full"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ ABOUT PAGE ============ -->
+<section data-page="/about">
+  <section class="bg-emerald-deep pb-20 pt-32 sm:pb-28 sm:pt-40">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="max-w-3xl">
+        <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-light">Our Story</span>
+        <h1 class="font-display text-4xl leading-[1.1] text-cream sm:text-6xl md:text-7xl">Built on one belief: your hair should feel entirely your own</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div data-reveal class="relative aspect-[4/5] overflow-hidden rounded-2xl">
+          <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1000&q=80&auto=format&fit=crop" alt="Stylist at work inside The Color Bar" class="h-full w-full object-cover" />
+        </div>
+        <div>
+          <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">How We Began</span>
+          <h2 class="font-display text-3xl leading-[1.15] text-charcoal sm:text-4xl">A colour bar, in the most literal sense</h2>
+          <p class="mt-5 text-[15px] leading-relaxed text-charcoal/60">The Color Bar opened its doors on Lighthouse Street with a simple idea: a salon where every colour formula is mixed at a dedicated bar, in full view, tailored to the person sitting in the chair — not pulled from a box.</p>
+          <p class="mt-4 text-[15px] leading-relaxed text-charcoal/60">What started as a single colourist's chair has grown into a full studio of cutting, treatment, and bridal specialists, all working from that same original idea: nothing generic, everything considered.</p>
+          <div class="mt-8">
+            <a href="#/artists" class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-charcoal/25 px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-charcoal transition-all duration-500 ease-out hover:border-emerald hover:text-emerald">
+              <span class="relative z-10 flex items-center gap-2">Meet the Artists
+                <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="mx-auto max-w-2xl text-center">
+        <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">What Drives Us</span>
+        <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">Mission &amp; Vision</h2>
+        <p class="mt-5 text-[15px] leading-relaxed text-charcoal/60 sm:text-base">Two ideas that guide every appointment at The Color Bar.</p>
+      </div>
+      <div class="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <div data-reveal class="rounded-2xl bg-cream p-8 sm:p-10">
+          <h3 class="font-display text-2xl text-emerald sm:text-3xl">Our Mission</h3>
+          <p class="mt-4 text-[15px] leading-relaxed text-charcoal/60">To give every guest hair that suits their real life — colour that grows out gracefully, cuts that hold their shape, and treatments that leave hair genuinely healthier than when they walked in.</p>
+        </div>
+        <div data-reveal style="transition-delay:0.1s" class="rounded-2xl bg-cream p-8 sm:p-10">
+          <h3 class="font-display text-2xl text-emerald sm:text-3xl">Our Vision</h3>
+          <p class="mt-4 text-[15px] leading-relaxed text-charcoal/60">To be the studio Sri Lankans and visitors alike think of first when they want hair that could sit comfortably in any city in the world — without leaving Galle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-emerald-deep py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="mx-auto max-w-2xl text-center">
+        <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-light">Our Philosophy</span>
+        <h2 class="font-display text-4xl leading-[1.1] text-cream sm:text-5xl md:text-6xl">Luxury is not loud</h2>
+        <p class="mt-5 text-[15px] leading-relaxed text-cream/70 sm:text-base">We believe true luxury is quiet: a room that isn't rushed, a colourist who listens before mixing anything, and results that look effortless because the process wasn't.</p>
+      </div>
+      <div data-reveal style="transition-delay:0.2s" class="mx-auto mt-14 max-w-2xl colorbar-slot"></div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ SERVICES PAGE ============ -->
+<section data-page="/services">
+  <section class="bg-cream pb-20 pt-32 sm:pb-28 sm:pt-40">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="max-w-2xl">
+        <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">The Menu</span>
+        <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">Services &amp; Pricing</h2>
+        <p class="mt-5 text-[15px] leading-relaxed text-charcoal/60 sm:text-base">Every service begins with a consultation. Prices shown are starting rates — your artist will confirm the final price based on your hair's length, thickness, and condition.</p>
+      </div>
+      <div id="services-page-grid" class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:grid-cols-3"></div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ ARTISTS LIST PAGE ============ -->
+<section data-page="/artists">
+  <section class="bg-cream pb-20 pt-32 sm:pb-28 sm:pt-40">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="max-w-2xl">
+        <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Our Craft, Our People</span>
+        <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">Hair Artists</h2>
+        <p class="mt-5 text-[15px] leading-relaxed text-charcoal/60 sm:text-base">Each artist at The Color Bar has a distinct specialty. Browse profiles to find the right match, or let our front desk pair you with one at booking.</p>
+      </div>
+      <div id="artists-page-grid" class="mt-14 grid grid-cols-2 gap-5 sm:gap-7 lg:grid-cols-4"></div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ ARTIST PROFILE PAGE (dynamic) ============ -->
+<section data-page="/artist-profile">
+  <div id="artist-profile-content"></div>
+</section>
+
+<!-- ============ GALLERY PAGE ============ -->
+<section data-page="/gallery">
+  <section class="bg-cream pb-20 pt-32 sm:pb-28 sm:pt-40">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="max-w-2xl">
+        <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Our Portfolio</span>
+        <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">Gallery</h2>
+        <p class="mt-5 text-[15px] leading-relaxed text-charcoal/60 sm:text-base">A look at recent work from across the studio — filter by category or tap any image for a closer look.</p>
+      </div>
+      <div class="mt-12">
+        <div id="gallery-filters" class="scrollbar-none -mx-5 flex gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:flex-wrap sm:px-0"></div>
+        <div id="gallery-masonry" class="masonry-col mt-8 columns-2 sm:mt-10 sm:columns-3 lg:columns-4"></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- Lightbox (shared by gallery) -->
+<div id="lightbox" class="fixed inset-0 z-[60] hidden items-center justify-center bg-charcoal/95 p-4 sm:p-10">
+  <button aria-label="Close" id="lightbox-close" class="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-cream/10 text-cream sm:right-8 sm:top-8">
+    <svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  </button>
+  <button aria-label="Previous" id="lightbox-prev" class="absolute left-2 flex h-12 w-12 items-center justify-center rounded-full bg-cream/10 text-cream sm:left-6">
+    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+  <div class="relative max-h-[80vh] w-full max-w-2xl" onclick="event.stopPropagation()">
+    <img id="lightbox-img" src="" alt="" class="max-h-[80vh] w-full rounded-xl object-contain" />
+    <p id="lightbox-caption" class="mt-4 text-center text-sm text-cream/70"></p>
+  </div>
+  <button aria-label="Next" id="lightbox-next" class="absolute right-2 flex h-12 w-12 items-center justify-center rounded-full bg-cream/10 text-cream sm:right-6">
+    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+</div>
+
+<!-- ============ TESTIMONIALS PAGE ============ -->
+<section data-page="/testimonials">
+  <section class="bg-cream pb-20 pt-32 sm:pb-28 sm:pt-40">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="max-w-2xl">
+        <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Client Love</span>
+        <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">Testimonials</h2>
+        <p class="mt-5 text-[15px] leading-relaxed text-charcoal/60 sm:text-base">Placeholder reviews shown below — connect your Google Business Profile to pull in live reviews.</p>
+      </div>
+      <div id="testimonials-page-grid" class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+      <div data-reveal class="mt-14 flex flex-col items-center gap-4 rounded-2xl bg-white p-8 text-center shadow-sm ring-1 ring-charcoal/5 sm:p-12">
+        <h3 class="font-display text-2xl text-charcoal sm:text-3xl">Loved your visit?</h3>
+        <p class="max-w-md text-sm text-charcoal/60">Leave us a review on Google — it helps other guests find us.</p>
+        <a href="https://maps.app.goo.gl/5aoXbxvXRQZXknqm9" class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-emerald px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-500 ease-out hover:bg-emerald-deep">
+          <span class="relative z-10 flex items-center gap-2">Leave a Review
+            <svg class="icon transition-transform duration-500 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+          <span class="absolute inset-0 -z-0 origin-left scale-x-0 bg-gold transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ CONTACT PAGE ============ -->
+<section data-page="/contact">
+  <section class="bg-cream pb-20 pt-32 sm:pb-28 sm:pt-40">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="max-w-2xl">
+        <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Get In Touch</span>
+        <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">Contact Us</h2>
+        <p class="mt-5 text-[15px] leading-relaxed text-charcoal/60 sm:text-base">Questions about a service, a booking, or just want to say hello — we'd love to hear from you.</p>
+      </div>
+
+      <div class="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <div data-reveal class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-charcoal/5">
+              <svg class="icon text-emerald" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <h3 class="mt-4 font-display text-lg text-charcoal">Address</h3>
+              <p class="mt-1 text-sm text-charcoal/60">10 Lighthouse St, Galle 80000, Sri Lanka</p>
+            </div>
+            <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-charcoal/5">
+              <svg class="icon text-emerald" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <h3 class="mt-4 font-display text-lg text-charcoal">Phone</h3>
+              <a href="tel:+94910000000" class="mt-1 block text-sm text-charcoal/60">+94 91 000 0000</a>
+            </div>
+            <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-charcoal/5">
+              <svg class="icon text-emerald" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <h3 class="mt-4 font-display text-lg text-charcoal">Email</h3>
+              <a href="mailto:hello@thecolorbar.lk" class="mt-1 block break-all text-sm text-charcoal/60">hello@thecolorbar.lk</a>
+            </div>
+            <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-charcoal/5">
+              <svg class="icon text-emerald" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <h3 class="mt-4 font-display text-lg text-charcoal">Hours</h3>
+              <ul class="mt-1 space-y-0.5 text-sm text-charcoal/60">
+                <li class="flex justify-between gap-4"><span>Monday</span><span>Closed</span></li>
+                <li class="flex justify-between gap-4"><span>Tuesday</span><span>9:00 AM – 7:00 PM</span></li>
+                <li class="flex justify-between gap-4"><span>Wednesday</span><span>9:00 AM – 7:00 PM</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div data-reveal style="transition-delay:0.1s" class="mt-6 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-charcoal/5">
+            <h3 class="font-display text-lg text-charcoal">Full Business Hours</h3>
+            <ul id="full-hours-list" class="mt-3 divide-y divide-charcoal/10 text-sm"></ul>
+          </div>
+
+          <div data-reveal style="transition-delay:0.15s" class="mt-6 flex gap-3">
+            <a href="https://instagram.com/" aria-label="Instagram" class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-emerald shadow-sm ring-1 ring-charcoal/5 transition-colors hover:bg-emerald hover:text-cream">
+              <svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com/" aria-label="Facebook" class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-emerald shadow-sm ring-1 ring-charcoal/5 transition-colors hover:bg-emerald hover:text-cream">
+              <svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://tiktok.com/" aria-label="TikTok" class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-emerald shadow-sm ring-1 ring-charcoal/5 transition-colors hover:bg-emerald hover:text-cream">
+              <svg class="icon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18a4 4 0 1 0 4-4V2h4a6 6 0 0 0 6 6"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-8">
+          <div data-reveal style="transition-delay:0.1s" id="contact-form-slot"></div>
+          <div data-reveal style="transition-delay:0.2s" class="h-72 sm:h-80"><div class="google-map-slot h-full"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============ BOOK APPOINTMENT PAGE ============ -->
+<section data-page="/book-appointment">
+  <section class="bg-cream pb-20 pt-32 sm:pb-28 sm:pt-40">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+        <div>
+          <div data-reveal class="max-w-2xl">
+            <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Reserve Your Chair</span>
+            <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">Book an Appointment</h2>
+            <p class="mt-5 text-[15px] leading-relaxed text-charcoal/60 sm:text-base">Fill out the form and our front desk will confirm your appointment within 24 hours.</p>
+          </div>
+          <div data-reveal style="transition-delay:0.15s" class="mt-10 hidden flex-col gap-4 rounded-2xl bg-emerald-deep p-7 text-cream sm:flex">
+            <p class="text-sm text-cream/70">Prefer to book by phone or email? We're happy to help directly.</p>
+            <a href="tel:+94910000000" class="flex items-center gap-3 text-sm">
+              <svg class="icon text-gold-light" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              +94 91 000 0000
+            </a>
+            <a href="mailto:hello@thecolorbar.lk" class="flex items-center gap-3 text-sm">
+              <svg class="icon text-gold-light" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              hello@thecolorbar.lk
+            </a>
+          </div>
+        </div>
+        <div data-reveal style="transition-delay:0.1s" id="booking-form-slot"></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-charcoal pt-16 text-cream/80 sm:pt-20">
+  <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+    <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-5">
+      <div class="lg:col-span-2">
+        <span class="font-display text-2xl text-cream">The Color Bar</span>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-cream/60">A luxury hair studio in the heart of Galle, crafting colour, cuts, and rituals built around you.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="https://instagram.com/" aria-label="Instagram" class="flex h-11 w-11 items-center justify-center rounded-full border border-cream/15 transition-colors hover:border-gold hover:text-gold">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://facebook.com/" aria-label="Facebook" class="flex h-11 w-11 items-center justify-center rounded-full border border-cream/15 transition-colors hover:border-gold hover:text-gold">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://tiktok.com/" aria-label="TikTok" class="flex h-11 w-11 items-center justify-center rounded-full border border-cream/15 transition-colors hover:border-gold hover:text-gold">
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18a4 4 0 1 0 4-4V2h4a6 6 0 0 0 6 6"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-[11px] font-semibold uppercase tracking-widest2 text-gold-light">Quick Links</h3>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li><a href="#/about" class="transition-colors hover:text-gold-light">About</a></li>
+          <li><a href="#/artists" class="transition-colors hover:text-gold-light">Hair Artists</a></li>
+          <li><a href="#/gallery" class="transition-colors hover:text-gold-light">Gallery</a></li>
+          <li><a href="#/testimonials" class="transition-colors hover:text-gold-light">Testimonials</a></li>
+          <li><a href="#/book-appointment" class="transition-colors hover:text-gold-light">Book Appointment</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-[11px] font-semibold uppercase tracking-widest2 text-gold-light">Services</h3>
+        <ul id="footer-services-list" class="mt-5 space-y-3 text-sm"></ul>
+      </div>
+
+      <div>
+        <h3 class="text-[11px] font-semibold uppercase tracking-widest2 text-gold-light">Visit Us</h3>
+        <ul class="mt-5 space-y-4 text-sm">
+          <li class="flex gap-3">
+            <svg class="icon mt-0.5 shrink-0 text-gold-light" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>10 Lighthouse St, Galle 80000, Sri Lanka</span>
+          </li>
+          <li class="flex gap-3">
+            <svg class="icon mt-0.5 shrink-0 text-gold-light" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a href="tel:+94910000000">+94 91 000 0000</a>
+          </li>
+          <li class="flex gap-3">
+            <svg class="icon mt-0.5 shrink-0 text-gold-light" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <a href="mailto:hello@thecolorbar.lk" class="break-all">hello@thecolorbar.lk</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-14 border-t border-cream/10 pt-10 sm:mt-16">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div class="max-w-sm">
+          <h3 class="font-display text-xl text-cream">Join our inner circle</h3>
+          <p class="mt-1 text-sm text-cream/60">Colour trends, styling tips, and early access to seasonal offers.</p>
+        </div>
+        <div id="newsletter-form-slot"></div>
+      </div>
+    </div>
+
+    <div class="mt-12 opacity-70 colorbar-slot" data-static="true"></div>
+
+    <div class="flex flex-col gap-3 py-8 text-xs text-cream/40 sm:flex-row sm:items-center sm:justify-between">
+      <p>© <span id="footer-year"></span> The Color Bar. All rights reserved.</p>
+      <div class="flex gap-2"><span>Open Tuesday–Sunday</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   DATA
+   ========================================================= */
+const business = {
+  name: "The Color Bar",
+  address: { line1: "10 Lighthouse St", city: "Galle", full: "10 Lighthouse St, Galle 80000, Sri Lanka" },
+  phone: "+94 91 000 0000",
+  email: "hello@thecolorbar.lk",
+  mapsEmbedSrc: "https://www.google.com/maps?q=10+Lighthouse+St,+Galle+80000,+Sri+Lanka&output=embed",
+  hours: [
+    { day: "Monday", time: "Closed" },
+    { day: "Tuesday", time: "9:00 AM – 7:00 PM" },
+    { day: "Wednesday", time: "9:00 AM – 7:00 PM" },
+    { day: "Thursday", time: "9:00 AM – 7:00 PM" },
+    { day: "Friday", time: "9:00 AM – 8:00 PM" },
+    { day: "Saturday", time: "9:00 AM – 8:00 PM" },
+    { day: "Sunday", time: "10:00 AM – 5:00 PM" },
+  ],
+};
+
+const services = [
+  { slug: "haircuts", name: "Signature Haircuts", short: "Precision cutting tailored to your face shape and lifestyle.", priceFrom: 4500, currency: "LKR", duration: "45 min", image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80&auto=format&fit=crop" },
+  { slug: "hair-coloring", name: "Hair Colouring", short: "Rich, dimensional colour from our master colourists.", priceFrom: 8500, currency: "LKR", duration: "2 hr", image: "https://images.unsplash.com/photo-1595476108010-b4d1f102b6f6?w=1200&q=80&auto=format&fit=crop" },
+  { slug: "balayage", name: "Balayage", short: "Hand-painted, sun-kissed dimension that grows out beautifully.", priceFrom: 12000, currency: "LKR", duration: "3 hr", image: "https://images.unsplash.com/photo-1522336572468-97b06e8ef143?w=1200&q=80&auto=format&fit=crop" },
+  { slug: "highlights", name: "Highlights & Lowlights", short: "Classic dimension using foils for precise, lasting contrast.", priceFrom: 9500, currency: "LKR", duration: "2.5 hr", image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=1200&q=80&auto=format&fit=crop" },
+  { slug: "hair-treatments", name: "Restorative Treatments", short: "Deep repair rituals for stressed, coloured, or brittle hair.", priceFrom: 5000, currency: "LKR", duration: "40 min", image: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1200&q=80&auto=format&fit=crop" },
+  { slug: "keratin", name: "Keratin Smoothing", short: "Frizz-free, silky strands that last for months.", priceFrom: 15000, currency: "LKR", duration: "3 hr", image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=1200&q=80&auto=format&fit=crop" },
+  { slug: "hair-spa", name: "Luxury Hair Spa", short: "A restorative ritual for the scalp and strands alike.", priceFrom: 6000, currency: "LKR", duration: "1 hr", image: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1200&q=80&auto=format&fit=crop&sat=-20" },
+  { slug: "bridal-hair", name: "Bridal Hair", short: "Timeless bridal styling with trial sessions included.", priceFrom: 18000, currency: "LKR", duration: "2 hr", image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80&auto=format&fit=crop" },
+  { slug: "styling", name: "Styling & Blowouts", short: "Editorial finishes for every occasion.", priceFrom: 3500, currency: "LKR", duration: "45 min", image: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1200&q=80&auto=format&fit=crop&sat=20" },
+  { slug: "extensions", name: "Hair Extensions", short: "Seamless length and volume, matched to your natural colour.", priceFrom: 22000, currency: "LKR", duration: "3 hr", image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=1200&q=80&auto=format&fit=crop&sat=-10" },
+];
+
+const artists = [
+  {
+    slug: "amara-fernando", name: "Amara Fernando", position: "Creative Director & Master Colourist", yearsExperience: 14,
+    specialties: ["Balayage", "Colour Correction", "Editorial Colour"],
+    portrait: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=900&q=80&auto=format&fit=crop",
+    bio: "Amara founded The Color Bar's colour program after more than a decade working between Colombo and London. Known for dimensional, low-maintenance colour that grows out gracefully, she leads every colour correction case that comes through the door.",
+    certificates: ["L'Oréal Professionnel Colour Specialist", "Advanced Balayage Certification, London"],
+    gallery: ["https://images.unsplash.com/photo-1595476108010-b4d1f102b6f6?w=900&q=80&auto=format&fit=crop", "https://images.unsplash.com/photo-1522336572468-97b06e8ef143?w=900&q=80&auto=format&fit=crop", "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=900&q=80&auto=format&fit=crop"],
+    beforeAfter: [{ before: "https://images.unsplash.com/photo-1595342698528-6a2d4c1a3f3b?w=800&q=80&auto=format&fit=crop", after: "https://images.unsplash.com/photo-1595476108010-b4d1f102b6f6?w=800&q=80&auto=format&fit=crop", label: "Box dye to dimensional balayage" }],
+    instagram: "https://instagram.com/", availableDays: ["Tuesday", "Wednesday", "Friday", "Saturday"],
+  },
+  {
+    slug: "dinal-perera", name: "Dinal Perera", position: "Senior Stylist", yearsExperience: 9,
+    specialties: ["Precision Cutting", "Men's Grooming", "Textured Hair"],
+    portrait: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=900&q=80&auto=format&fit=crop",
+    bio: "Dinal trained under master barbers in Milan before returning home to specialise in precision cutting for all hair types. He's known for cuts that hold their shape well between appointments.",
+    certificates: ["Vidal Sassoon Advanced Cutting", "Textured Hair Specialist Certification"],
+    gallery: ["https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=900&q=80&auto=format&fit=crop", "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=900&q=80&auto=format&fit=crop"],
+    beforeAfter: [{ before: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80&auto=format&fit=crop&sat=-40", after: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80&auto=format&fit=crop", label: "Overgrown to sharp precision cut" }],
+    instagram: "https://instagram.com/", availableDays: ["Wednesday", "Thursday", "Friday", "Saturday"],
+  },
+  {
+    slug: "nethmi-jayasuriya", name: "Nethmi Jayasuriya", position: "Bridal & Editorial Stylist", yearsExperience: 11,
+    specialties: ["Bridal Hair", "Editorial Styling", "Extensions"],
+    portrait: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=900&q=80&auto=format&fit=crop",
+    bio: "Nethmi has styled hair for fashion editorials and over 200 weddings across the island. She leads our bridal program from first trial to final touch-up on the day.",
+    certificates: ["Bridal Styling Diploma, Colombo", "Hand-Tied Extensions Certification"],
+    gallery: ["https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80&auto=format&fit=crop", "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=900&q=80&auto=format&fit=crop"],
+    beforeAfter: [{ before: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=80&auto=format&fit=crop&sat=-40", after: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80&auto=format&fit=crop", label: "Everyday hair to bridal updo" }],
+    instagram: "https://instagram.com/", availableDays: ["Tuesday", "Thursday", "Saturday", "Sunday"],
+  },
+  {
+    slug: "ravindu-silva", name: "Ravindu Silva", position: "Treatments & Scalp Specialist", yearsExperience: 7,
+    specialties: ["Keratin Smoothing", "Hair Spa", "Scalp Health"],
+    portrait: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&q=80&auto=format&fit=crop",
+    bio: "Ravindu focuses on the health of the hair beneath the style — from keratin smoothing to restorative spa rituals that repair what colour and heat styling take away.",
+    certificates: ["Keratin Complex Certified Stylist", "Trichology Fundamentals"],
+    gallery: ["https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=900&q=80&auto=format&fit=crop", "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=900&q=80&auto=format&fit=crop&sat=-10"],
+    beforeAfter: [{ before: "https://images.unsplash.com/photo-1522336572468-97b06e8ef143?w=800&q=80&auto=format&fit=crop&sat=-30", after: "https://images.unsplash.com/photo-1522336572468-97b06e8ef143?w=800&q=80&auto=format&fit=crop", label: "Frizz-prone to smooth & glossy" }],
+    instagram: "https://instagram.com/", availableDays: ["Tuesday", "Wednesday", "Friday", "Saturday"],
+  },
+];
+
+const testimonials = [
+  { id: "t1", name: "Ishara W.", rating: 5, text: "The most relaxing, elegant salon experience I've had in Sri Lanka. My balayage grew out beautifully and the consultation alone was worth the visit.", service: "Balayage with Amara" },
+  { id: "t2", name: "Kavindu R.", rating: 5, text: "Booked a fade before a work trip and it held its shape for weeks. Attention to detail is on another level.", service: "Precision Cut with Dinal" },
+  { id: "t3", name: "Tharushi F.", rating: 5, text: "Trusted them with my wedding hair and they delivered exactly what I pictured, plus a trial run that put me completely at ease.", service: "Bridal Hair with Nethmi" },
+  { id: "t4", name: "Sanduni P.", rating: 5, text: "My hair has never felt this healthy after years of colouring. The hair spa ritual is worth every minute.", service: "Luxury Hair Spa with Ravindu" },
+  { id: "t5", name: "Malith D.", rating: 4, text: "Beautiful space, warm staff, and a keratin treatment that actually lasted the four months they promised.", service: "Keratin Smoothing with Ravindu" },
+  { id: "t6", name: "Anoma S.", rating: 5, text: "Colour correction from a box-dye disaster to exactly the tone I wanted. Amara is a true artist.", service: "Colour Correction with Amara" },
+];
+
+const galleryItems = [
+  { id: "g1", category: "Hair Colour", image: "https://images.unsplash.com/photo-1595476108010-b4d1f102b6f6?w=900&q=80&auto=format&fit=crop", caption: "Dimensional balayage" },
+  { id: "g2", category: "Hair Colour", image: "https://images.unsplash.com/photo-1522336572468-97b06e8ef143?w=900&q=80&auto=format&fit=crop", caption: "Rich copper tone" },
+  { id: "g3", category: "Cuts", image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&q=80&auto=format&fit=crop", caption: "Precision bob" },
+  { id: "g4", category: "Cuts", image: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=900&q=80&auto=format&fit=crop", caption: "Textured crop" },
+  { id: "g5", category: "Treatments", image: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=900&q=80&auto=format&fit=crop", caption: "Keratin gloss" },
+  { id: "g6", category: "Treatments", image: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=900&q=80&auto=format&fit=crop&sat=-10", caption: "Restorative masque" },
+  { id: "g7", category: "Bridal", image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80&auto=format&fit=crop", caption: "Bridal updo" },
+  { id: "g8", category: "Bridal", image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=900&q=80&auto=format&fit=crop", caption: "Soft bridal waves" },
+  { id: "g9", category: "Before & After", image: "https://images.unsplash.com/photo-1595342698528-6a2d4c1a3f3b?w=900&q=80&auto=format&fit=crop", caption: "Colour correction result" },
+  { id: "g10", category: "Before & After", image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=900&q=80&auto=format&fit=crop", caption: "Overgrown to sharp cut" },
+  { id: "g11", category: "Hair Colour", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=900&q=80&auto=format&fit=crop", caption: "Warm honey blonde" },
+  { id: "g12", category: "Cuts", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&q=80&auto=format&fit=crop", caption: "Classic layers" },
+];
+
+const swatches = ["#3B2314", "#6B3A1F", "#9C5A2E", "#C48A4A", "#D9B27C", "#E8D3AC", "#C9A227", "#0F5E4A"];
+
+/* =========================================================
+   ICONS (small inline helpers)
+   ========================================================= */
+const iconArrowRight = `<svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>`;
+const iconStar = (filled) => `<svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="${filled ? '#C9A227' : 'rgba(32,31,29,0.1)'}" stroke="${filled ? '#C9A227' : 'rgba(32,31,29,0.1)'}" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`;
+const iconQuote = `<svg class="icon text-gold" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 3.25-2.75 3.25V20c0 1 0 1 1 1z"/></svg>`;
+const iconInstagram = `<svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>`;
+const iconAward = `<svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>`;
+const iconCalendar = `<svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>`;
+const iconArrowLeft = `<svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>`;
+const iconCheck = `<svg class="icon" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#0F5E4A" stroke-width="1.3"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+const iconCheckSmall = `<svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+
+/* =========================================================
+   TEMPLATE BUILDERS
+   ========================================================= */
+function colorBarHTML(extraClass) {
+  const bars = swatches.map((c, i) => `<span class="swatch h-full flex-1" style="background-color:${c}; transition-delay:${i * 0.05}s"></span>`).join('');
+  return `<div class="flex h-2.5 w-full overflow-hidden rounded-full ${extraClass || ''}">${bars}</div>`;
+}
+
+function serviceCardHTML(s) {
+  return `
+  <div data-reveal class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-charcoal/5 transition-shadow duration-500 hover:shadow-xl">
+    <div class="relative aspect-[4/3] w-full overflow-hidden">
+      <img src="${s.image}" alt="${s.name}" class="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110" />
+      <div class="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+      <span class="absolute right-4 top-4 rounded-full bg-cream/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-emerald">${s.duration}</span>
+    </div>
+    <div class="flex flex-1 flex-col p-6 sm:p-7">
+      <h3 class="font-display text-xl text-charcoal sm:text-2xl">${s.name}</h3>
+      <p class="mt-2 flex-1 text-sm leading-relaxed text-charcoal/60">${s.short}</p>
+      <div class="mt-5 flex items-center justify-between border-t border-charcoal/10 pt-5">
+        <span class="text-sm text-charcoal/70">From <strong class="font-display text-base text-emerald">${s.currency} ${s.priceFrom.toLocaleString()}</strong></span>
+        <a href="#/book-appointment?service=${s.slug}" class="flex items-center gap-1.5 text-[13px] font-semibold uppercase tracking-wider text-emerald transition-colors hover:text-gold-dark">Book ${iconArrowRight}</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function artistCardHTML(a) {
+  const chips = a.specialties.slice(0, 3).map(s => `<span class="rounded-full border border-charcoal/10 px-3 py-1 text-[11px] uppercase tracking-wider text-charcoal/60">${s}</span>`).join('');
+  return `
+  <div data-reveal class="group flex flex-col">
+    <div class="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-emerald-deep/5">
+      <img src="${a.portrait}" alt="${a.name}" class="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105" />
+      <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/0 to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 p-5"><p class="text-[11px] font-semibold uppercase tracking-widest2 text-gold-light">${a.yearsExperience}+ Years</p></div>
+    </div>
+    <div class="mt-5">
+      <h3 class="font-display text-xl text-charcoal sm:text-2xl">${a.name}</h3>
+      <p class="mt-1 text-sm text-emerald">${a.position}</p>
+      <div class="mt-3 flex flex-wrap gap-2">${chips}</div>
+      <div class="mt-5">
+        <a href="#/artists/${a.slug}" class="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-charcoal/25 px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-charcoal transition-all duration-500 ease-out hover:border-emerald hover:text-emerald sm:w-auto">
+          <span class="relative z-10 flex items-center gap-2">View Profile ${iconArrowRight}</span>
+        </a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function testimonialCardHTML(t) {
+  const stars = Array.from({ length: 5 }).map((_, i) => iconStar(i < t.rating)).join('');
+  return `
+  <div data-reveal class="flex h-full flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-charcoal/5 sm:p-8">
+    ${iconQuote}
+    <div class="mt-4 flex gap-1">${stars}</div>
+    <p class="mt-4 flex-1 text-[15px] leading-relaxed text-charcoal/70">"${t.text}"</p>
+    <div class="mt-6 border-t border-charcoal/10 pt-5">
+      <p class="font-display text-lg text-charcoal">${t.name}</p>
+      <p class="text-xs uppercase tracking-wider text-charcoal/40">${t.service}</p>
+    </div>
+  </div>`;
+}
+
+function galleryTileHTML(item, { instagram = false } = {}) {
+  if (instagram) {
+    return `
+    <div data-reveal class="group relative aspect-square overflow-hidden rounded-xl">
+      <img src="${item.image}" alt="${item.caption}" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+      <div class="absolute inset-0 flex items-center justify-center bg-emerald-deep/0 transition-colors duration-500 group-hover:bg-emerald-deep/40">
+        <span class="text-cream opacity-0 transition-opacity duration-500 group-hover:opacity-100">${iconInstagram}</span>
+      </div>
+    </div>`;
+  }
+  return `
+  <div data-reveal class="group relative aspect-square overflow-hidden rounded-xl">
+    <img src="${item.image}" alt="${item.caption}" class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+  </div>`;
+}
+
+function googleMapHTML() {
+  return `<div class="overflow-hidden rounded-2xl ring-1 ring-charcoal/10 h-full">
+    <iframe title="The Color Bar location" src="${business.mapsEmbedSrc}" width="100%" height="100%" style="border:0;min-height:340px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="h-full w-full"></iframe>
+  </div>`;
+}
+
+const inputClass = "w-full rounded-xl border border-charcoal/15 bg-white px-4 py-3.5 text-[15px] text-charcoal placeholder:text-charcoal/35 focus:border-emerald focus:outline-none focus:ring-2 focus:ring-emerald/15 transition-colors";
+const labelClass = "mb-2 block text-[13px] font-medium uppercase tracking-wider text-charcoal/60";
+
+function contactFormHTML() {
+  return `
+  <form id="contact-form" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-charcoal/5 sm:p-8">
+    <input type="hidden" name="access_key" value="4cc9c960-1185-4922-8fac-9d896e920251">
+
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <div>
+        <label class="${labelClass}">Name</label>
+        <input required name="name" type="text" placeholder="Your name" class="${inputClass}" />
+      </div>
+
+      <div>
+        <label class="${labelClass}">Email</label>
+        <input required name="email" type="email" placeholder="you@email.com" class="${inputClass}" />
+      </div>
+
+      <div class="sm:col-span-2">
+        <label class="${labelClass}">Message</label>
+        <textarea required name="message" rows="5" placeholder="How can we help?" class="${inputClass} resize-none"></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="group relative mt-6 inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-emerald px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-500 ease-out hover:bg-emerald-deep sm:w-auto">
+      <span class="relative z-10 flex items-center gap-2">Send Message ${iconArrowRight}</span>
+      <span class="absolute inset-0 -z-0 origin-left scale-x-0 bg-gold transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+    </button>
+  </form>`;
+}
+
+function bookingFormHTML(defaultService, defaultArtist) {
+  const artistOptions = artists.map(a => `<option value="${a.slug}" ${a.slug === defaultArtist ? 'selected' : ''}>${a.name}</option>`).join('');
+  const serviceOptions = services.map(s => `<option value="${s.slug}" ${s.slug === defaultService ? 'selected' : ''}>${s.name}</option>`).join('');
+
+  return `
+  <form id="booking-form" class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-charcoal/5 sm:p-10">
+
+    <input type="hidden" name="access_key" value="4cc9c960-1185-4922-8fac-9d896e920251">
+
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+
+      <div>
+        <label class="${labelClass}">Full Name</label>
+        <input required name="name" type="text" placeholder="Jane Perera" class="${inputClass}" />
+      </div>
+
+      <div>
+        <label class="${labelClass}">Phone Number</label>
+        <input required name="phone" type="tel" placeholder="+94 77 000 0000" class="${inputClass}" />
+      </div>
+
+      <div>
+        <label class="${labelClass}">Email Address</label>
+        <input required name="email" type="email" placeholder="jane@email.com" class="${inputClass}" />
+      </div>
+
+      <div>
+        <label class="${labelClass}">Preferred Artist</label>
+        <select name="artist" class="${inputClass}">
+          <option value="" disabled ${!defaultArtist ? 'selected' : ''}>Select an artist</option>
+          <option value="any">No preference</option>
+          ${artistOptions}
+        </select>
+      </div>
+
+      <div>
+        <label class="${labelClass}">Preferred Service</label>
+        <select name="service" class="${inputClass}">
+          <option value="" disabled ${!defaultService ? 'selected' : ''}>Select a service</option>
+          ${serviceOptions}
+        </select>
+      </div>
+
+      <div>
+        <label class="${labelClass}">Preferred Date</label>
+        <input required name="date" type="date" class="${inputClass}" />
+      </div>
+
+      <div class="sm:col-span-2">
+        <label class="${labelClass}">Preferred Time</label>
+        <input required name="time" type="time" class="${inputClass}" />
+      </div>
+
+      <div class="sm:col-span-2">
+        <label class="${labelClass}">Message (optional)</label>
+        <textarea name="message" rows="4" placeholder="Tell us anything that helps us prepare for your visit…" class="${inputClass} resize-none"></textarea>
+      </div>
+
+    </div>
+
+    <button type="submit" class="group relative mt-8 inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-emerald px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-500 ease-out hover:bg-emerald-deep sm:w-auto">
+      <span class="relative z-10 flex items-center gap-2">Confirm Request ${iconArrowRight}</span>
+      <span class="absolute inset-0 -z-0 origin-left scale-x-0 bg-gold transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+    </button>
+
+    <p class="mt-4 text-xs text-charcoal/40">This request is not confirmed until our team follows up with you directly.</p>
+
+  </form>`;
+}
+
+function newsletterFormHTML() {
+  return `
+  <form id="newsletter-form" class="flex w-full max-w-sm gap-2 sm:w-auto">
+    <input type="email" required placeholder="Your email" class="w-full min-w-0 rounded-full border border-cream/20 bg-transparent px-5 py-3 text-sm text-cream placeholder:text-cream/40 focus:border-gold focus:outline-none" />
+    <button type="submit" class="shrink-0 rounded-full bg-gold px-6 py-3 text-[13px] font-semibold uppercase tracking-wider text-charcoal transition-colors hover:bg-gold-light">Join</button>
+  </form>`;
+}
+
+function successStateHTML(title, message, { big = false } = {}) {
+  return `
+  <div class="flex flex-col items-center rounded-2xl bg-white px-6 ${big ? 'py-16 sm:py-24' : 'py-14'} text-center shadow-sm ring-1 ring-charcoal/5">
+    ${iconCheck}
+    <h3 class="mt-6 font-display ${big ? 'text-2xl sm:text-3xl' : 'text-2xl'} text-charcoal">${title}</h3>
+    <p class="mt-3 max-w-sm text-sm leading-relaxed text-charcoal/60">${message}</p>
+    ${big ? `<button id="book-another-btn" class="group relative mt-8 inline-flex items-center gap-2 overflow-hidden rounded-full border border-charcoal/25 px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-charcoal transition-all duration-500 ease-out hover:border-emerald hover:text-emerald"><span class="relative z-10 flex items-center gap-2">Book Another ${iconArrowRight}</span></button>` : ''}
+  </div>`;
+}
+
+/* =========================================================
+   ARTIST PROFILE (dynamic page)
+   ========================================================= */
+function renderArtistProfile(slug) {
+  const container = document.getElementById('artist-profile-content');
+  const artist = artists.find(a => a.slug === slug);
+
+  if (!artist) {
+    container.innerHTML = `
+    <section class="bg-cream py-32 text-center">
+      <div class="mx-auto max-w-xl px-5">
+        <h1 class="font-display text-3xl text-charcoal sm:text-4xl">Artist not found</h1>
+        <p class="mt-4 text-charcoal/60">We couldn't find that hair artist profile.</p>
+        <a href="#/artists" class="mt-8 inline-flex items-center gap-2 rounded-full border border-charcoal/25 px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-charcoal">${iconArrowLeft} All Artists</a>
+      </div>
+    </section>`;
+    return;
+  }
+
+  const relatedTestimonials = testimonials.filter(t => t.service.toLowerCase().includes(artist.name.split(' ')[0].toLowerCase()));
+  const specialtyChips = artist.specialties.map(s => `<span class="rounded-full border border-cream/20 px-3.5 py-1.5 text-[11px] uppercase tracking-wider text-cream/80">${s}</span>`).join('');
+  const certList = artist.certificates.map(c => `<li class="text-sm text-charcoal/70">${c}</li>`).join('');
+  const dayChips = artist.availableDays.map(d => `<span class="rounded-full bg-emerald/10 px-3.5 py-1.5 text-[12px] font-medium text-emerald">${d}</span>`).join('');
+  const galleryImgs = artist.gallery.map((img, i) => `<div data-reveal style="transition-delay:${i * 0.08}s" class="relative aspect-[4/5] overflow-hidden rounded-xl"><img src="${img}" alt="${artist.name} portfolio ${i + 1}" class="h-full w-full object-cover" /></div>`).join('');
+  const firstName = artist.name.split(' ')[0];
+
+  const beforeAfterHTML = artist.beforeAfter.length ? `
+  <section class="bg-cream py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="max-w-2xl"><span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Transformations</span><h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">Before &amp; After</h2></div>
+      <div class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+        ${artist.beforeAfter.map(ba => `
+        <div data-reveal class="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-charcoal/5 sm:p-5">
+          <div class="grid grid-cols-2 gap-2">
+            <div class="relative aspect-square overflow-hidden rounded-xl"><img src="${ba.before}" alt="Before" class="h-full w-full object-cover" /><span class="absolute left-2 top-2 rounded-full bg-charcoal/70 px-2.5 py-1 text-[10px] uppercase tracking-wider text-cream">Before</span></div>
+            <div class="relative aspect-square overflow-hidden rounded-xl"><img src="${ba.after}" alt="After" class="h-full w-full object-cover" /><span class="absolute left-2 top-2 rounded-full bg-emerald px-2.5 py-1 text-[10px] uppercase tracking-wider text-cream">After</span></div>
+          </div>
+          <p class="mt-3 text-center text-sm text-charcoal/60">${ba.label}</p>
+        </div>`).join('')}
+      </div>
+    </div>
+  </section>` : '';
+
+  const testimonialsHTML = relatedTestimonials.length ? `
+  <section class="bg-emerald-deep py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="max-w-2xl"><span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-light">Client Love</span><h2 class="font-display text-4xl leading-[1.1] text-cream sm:text-5xl md:text-6xl">Testimonials</h2></div>
+      <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">${relatedTestimonials.map(testimonialCardHTML).join('')}</div>
+    </div>
+  </section>` : '';
+
+  container.innerHTML = `
+  <section class="bg-emerald-deep pb-16 pt-28 sm:pb-20 sm:pt-36">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal><a href="#/artists" class="mb-8 flex w-fit items-center gap-2 text-[13px] font-medium uppercase tracking-wider text-cream/60 transition-colors hover:text-gold-light">${iconArrowLeft} All Artists</a></div>
+      <div class="grid grid-cols-1 items-end gap-10 lg:grid-cols-2">
+        <div data-reveal>
+          <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-light">${artist.position}</span>
+          <h1 class="font-display text-4xl leading-[1.05] text-cream sm:text-6xl">${artist.name}</h1>
+          <div class="mt-6 flex flex-wrap gap-2">${specialtyChips}</div>
+        </div>
+        <div data-reveal style="transition-delay:0.1s" class="flex gap-8 lg:justify-end">
+          <div><p class="font-display text-4xl text-gold-light">${artist.yearsExperience}+</p><p class="text-xs uppercase tracking-wider text-cream/50">Years Experience</p></div>
+          <div><p class="font-display text-4xl text-gold-light">${artist.availableDays.length}</p><p class="text-xs uppercase tracking-wider text-cream/50">Days Available</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cream py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <div data-reveal class="relative aspect-[3/4] overflow-hidden rounded-2xl"><img src="${artist.portrait}" alt="${artist.name}" class="h-full w-full object-cover" /></div>
+        <div>
+          <span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Biography</span>
+          <h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl">About</h2>
+          <p class="mt-6 max-w-2xl text-[15px] leading-relaxed text-charcoal/65">${artist.bio}</p>
+          <div class="mt-10">
+            <h3 class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">${iconAward} Certificates</h3>
+            <ul class="mt-4 space-y-2">${certList}</ul>
+          </div>
+          <div class="mt-8">
+            <h3 class="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">${iconCalendar} Available Days</h3>
+            <div class="mt-4 flex flex-wrap gap-2">${dayChips}</div>
+          </div>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="#/book-appointment?artist=${artist.slug}" class="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-emerald px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-500 ease-out hover:bg-emerald-deep">
+              <span class="relative z-10 flex items-center gap-2">Book with ${firstName} ${iconArrowRight}</span>
+              <span class="absolute inset-0 -z-0 origin-left scale-x-0 bg-gold transition-transform duration-500 ease-out group-hover:scale-x-100"></span>
+            </a>
+            <a href="${artist.instagram}" class="inline-flex items-center gap-2 rounded-full border border-charcoal/25 px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] text-charcoal transition-all duration-500 ease-out hover:border-emerald hover:text-emerald">${iconInstagram} Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 sm:py-28">
+    <div class="mx-auto max-w-8xl px-5 sm:px-8 lg:px-12">
+      <div data-reveal class="max-w-2xl"><span class="mb-4 block text-[11px] font-semibold uppercase tracking-widest2 text-gold-dark">Portfolio</span><h2 class="font-display text-4xl leading-[1.1] text-charcoal sm:text-5xl md:text-6xl">Work by ${firstName}</h2></div>
+      <div class="mt-10 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">${galleryImgs}</div>
+    </div>
+  </section>
+
+  ${beforeAfterHTML}
+  ${testimonialsHTML}
+  `;
+  initReveal(container);
+}
+
+/* =========================================================
+   GALLERY PAGE (filter + masonry + lightbox)
+   ========================================================= */
+const galleryCategories = ["All", "Hair Colour", "Cuts", "Treatments", "Bridal", "Before & After"];
+let galleryActiveFilter = "All";
+let galleryLightboxItems = [];
+let galleryLightboxIndex = null;
+
+function renderGalleryFilters() {
+  const el = document.getElementById('gallery-filters');
+  el.innerHTML = galleryCategories.map(c => `
+    <button data-filter="${c}" class="gallery-filter-btn shrink-0 rounded-full border px-5 py-2.5 text-[13px] font-medium uppercase tracking-wider transition-colors duration-300 ${c === galleryActiveFilter ? 'border-emerald bg-emerald text-cream' : 'border-charcoal/15 text-charcoal/60 hover:border-emerald hover:text-emerald'}">${c}</button>
+  `).join('');
+  el.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      galleryActiveFilter = btn.getAttribute('data-filter');
+      renderGalleryFilters();
+      renderGalleryMasonry();
+    });
+  });
+}
+
+function renderGalleryMasonry() {
+  const filtered = galleryActiveFilter === "All" ? galleryItems : galleryItems.filter(i => i.category === galleryActiveFilter);
+  galleryLightboxItems = filtered;
+  const el = document.getElementById('gallery-masonry');
+  el.innerHTML = filtered.map((item, i) => `
+    <button data-gallery-id="${item.id}" class="group relative mb-3 block w-full break-inside-avoid overflow-hidden rounded-xl sm:mb-4">
+      <img src="${item.image}" alt="${item.caption}" class="w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+      <div class="absolute inset-0 flex items-end bg-gradient-to-t from-charcoal/70 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <span class="p-4 text-left text-sm text-cream">${item.caption}</span>
+      </div>
+    </button>
+  `).join('');
+  el.querySelectorAll('[data-gallery-id]').forEach(btn => {
+    btn.addEventListener('click', () => openLightbox(btn.getAttribute('data-gallery-id')));
+  });
+}
+
+function openLightbox(id) {
+  galleryLightboxIndex = galleryLightboxItems.findIndex(i => i.id === id);
+  showLightbox();
+}
+function showLightbox() {
+  if (galleryLightboxIndex === null) return;
+  const item = galleryLightboxItems[galleryLightboxIndex];
+  document.getElementById('lightbox-img').src = item.image;
+  document.getElementById('lightbox-img').alt = item.caption;
+  document.getElementById('lightbox-caption').textContent = item.caption;
+  document.getElementById('lightbox').classList.remove('hidden');
+  document.getElementById('lightbox').classList.add('flex');
+}
+function closeLightbox() {
+  galleryLightboxIndex = null;
+  document.getElementById('lightbox').classList.add('hidden');
+  document.getElementById('lightbox').classList.remove('flex');
+}
+function lightboxNext() {
+  if (galleryLightboxIndex === null) return;
+  galleryLightboxIndex = (galleryLightboxIndex + 1) % galleryLightboxItems.length;
+  showLightbox();
+}
+function lightboxPrev() {
+  if (galleryLightboxIndex === null) return;
+  galleryLightboxIndex = (galleryLightboxIndex - 1 + galleryLightboxItems.length) % galleryLightboxItems.length;
+  showLightbox();
+}
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+let revealObserver;
+function initReveal(scope) {
+  const root = scope || document;
+  const targets = root.querySelectorAll('[data-reveal]:not(.reveal-bound), .swatch:not(.reveal-bound)');
+  targets.forEach(t => {
+    t.classList.add('reveal-bound');
+    revealObserver.observe(t);
+  });
+}
+function setupRevealObserver() {
+  revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '-40px' });
+}
+
+/* =========================================================
+   POPULATE STATIC SLOTS (colorbar, map, forms, footer)
+   ========================================================= */
+function populateStaticSlots(scope) {
+  const root = scope || document;
+  root.querySelectorAll('.colorbar-slot').forEach(el => { el.innerHTML = colorBarHTML(); });
+  root.querySelectorAll('.google-map-slot').forEach(el => { el.innerHTML = googleMapHTML(); });
+}
+
+function populateHomePage() {
+  document.getElementById('home-services-grid').innerHTML = services.slice(0, 3).map(serviceCardHTML).join('');
+  document.getElementById('home-artists-grid').innerHTML = artists.map(artistCardHTML).join('');
+  document.getElementById('home-gallery-grid').innerHTML = galleryItems.slice(0, 8).map(g => galleryTileHTML(g)).join('');
+  document.getElementById('home-testimonials-grid').innerHTML = testimonials.slice(0, 3).map(testimonialCardHTML).join('');
+  document.getElementById('home-instagram-grid').innerHTML = galleryItems.slice(0, 6).map(g => galleryTileHTML(g, { instagram: true })).join('');
+}
+
+function populateServicesPage() {
+  document.getElementById('services-page-grid').innerHTML = services.map(serviceCardHTML).join('');
+}
+function populateArtistsPage() {
+  document.getElementById('artists-page-grid').innerHTML = artists.map(artistCardHTML).join('');
+}
+function populateTestimonialsPage() {
+  document.getElementById('testimonials-page-grid').innerHTML = testimonials.map(testimonialCardHTML).join('');
+}
+function populateContactPage() {
+  document.getElementById('contact-form-slot').innerHTML = contactFormHTML();
+  document.getElementById('full-hours-list').innerHTML = business.hours.map(h => `
+    <li class="flex justify-between py-2.5 text-charcoal/70"><span>${h.day}</span><span class="${h.time === 'Closed' ? 'text-charcoal/35' : ''}">${h.time}</span></li>
+  `).join('');
+  bindContactForm();
+}
+function populateBookingPage(defaultService, defaultArtist) {
+  document.getElementById('booking-form-slot').innerHTML = bookingFormHTML(defaultService, defaultArtist);
+  bindBookingForm();
+  async function setupWeb3Form(formId) {
+  const form = document.getElementById(formId);
+  if (!form) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      alert("Thank you! Your submission has been received.");
+      form.reset();
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  });
+}
+
+setupWeb3Form("contact-form");
+setupWeb3Form("booking-form");
+}
+function populateFooter() {
+  document.getElementById('footer-services-list').innerHTML = services.slice(0, 5).map(s => `<li><a href="#/services" class="transition-colors hover:text-gold-light">${s.name}</a></li>`).join('');
+  document.getElementById('newsletter-form-slot').innerHTML = newsletterFormHTML();
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+  bindNewsletterForm();
+}
+
+/* =========================================================
+   FORM HANDLERS
+   ========================================================= */
+function bindContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('contact-form-slot').innerHTML = successStateHTML('Message Sent', "Thank you for reaching out — we'll be in touch shortly.");
+  });
+}
+function bindBookingForm() {
+  const form = document.getElementById('booking-form');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const slot = document.getElementById('booking-form-slot');
+    slot.innerHTML = successStateHTML('Request Received', 'Thank you for choosing The Color Bar. Our front desk will confirm your appointment by phone or email within 24 hours.', { big: true });
+    document.getElementById('book-another-btn').addEventListener('click', () => {
+      populateBookingPage();
+    });
+  });
+}
+function bindNewsletterForm() {
+  const form = document.getElementById('newsletter-form');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('newsletter-form-slot').innerHTML = `<p class="flex items-center gap-2 text-sm text-gold-light">${iconCheckSmall} You're on the list — welcome to The Color Bar.</p>`;
+  });
+}
+
+/* =========================================================
+   ROUTER
+   ========================================================= */
+function parseHash() {
+  let hash = location.hash.replace(/^#/, '') || '/';
+  let [path, query] = hash.split('?');
+  path = path.replace(/\/+$/, '') || '/';
+  const params = new URLSearchParams(query || '');
+  return { path, params };
+}
+
+function showPage(pageKey) {
+  document.querySelectorAll('[data-page]').forEach(el => el.classList.remove('is-active'));
+  const el = document.querySelector(`[data-page="${pageKey}"]`);
+  if (el) el.classList.add('is-active');
+}
+
+function updateActiveNavLinks(path) {
+  document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+    const route = link.getAttribute('data-route');
+    const isActive = route === path;
+    link.classList.toggle('text-gold-light', isActive);
+    const underline = link.querySelector('.nav-underline');
+    if (underline) underline.classList.toggle('scale-x-100', isActive);
+  });
+}
+
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.add('hidden');
+  document.getElementById('icon-menu').classList.remove('hidden');
+  document.getElementById('icon-x').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+function router() {
+  const { path, params } = parseHash();
+  closeMobileMenu();
+
+  if (path === '/' ) {
+    showPage('/');
+  } else if (path === '/about') {
+    showPage('/about');
+  } else if (path === '/services') {
+    showPage('/services');
+  } else if (path === '/artists') {
+    showPage('/artists');
+  } else if (path.startsWith('/artists/')) {
+    const slug = path.split('/artists/')[1];
+    renderArtistProfile(slug);
+    showPage('/artist-profile');
+  } else if (path === '/gallery') {
+    showPage('/gallery');
+    galleryActiveFilter = 'All';
+    renderGalleryFilters();
+    renderGalleryMasonry();
+    initReveal(document.getElementById('gallery-masonry'));
+  } else if (path === '/testimonials') {
+    showPage('/testimonials');
+  } else if (path === '/contact') {
+    showPage('/contact');
+  } else if (path === '/book-appointment') {
+    showPage('/book-appointment');
+    populateBookingPage(params.get('service') || '', params.get('artist') || '');
+    initReveal(document.getElementById('booking-form-slot'));
+  } else {
+    showPage('/');
+  }
+
+  updateActiveNavLinks(path);
+  initReveal();
+  window.scrollTo(0, 0);
+}
+
+/* =========================================================
+   NAVBAR SCROLL + MOBILE MENU
+   ========================================================= */
+function setupNavbar() {
+  const navbar = document.getElementById('navbar');
+  function onScroll() {
+    const scrolled = window.scrollY > 32;
+    const menuOpen = !document.getElementById('mobile-menu').classList.contains('hidden');
+    if (scrolled || menuOpen) {
+      navbar.classList.remove('bg-transparent');
+      navbar.classList.add('bg-emerald-deep/90', 'shadow-[0_1px_0_0_rgba(201,162,39,0.25)]', 'backdrop-blur-md');
+    } else {
+      navbar.classList.add('bg-transparent');
+      navbar.classList.remove('bg-emerald-deep/90', 'shadow-[0_1px_0_0_rgba(201,162,39,0.25)]', 'backdrop-blur-md');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconX = document.getElementById('icon-x');
+  toggle.addEventListener('click', () => {
+    const isHidden = menu.classList.contains('hidden');
+    if (isHidden) {
+      menu.classList.remove('hidden');
+      iconMenu.classList.add('hidden');
+      iconX.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    } else {
+      closeMobileMenu();
+    }
+    onScroll();
+  });
+}
+
+/* =========================================================
+   LIGHTBOX BINDINGS
+   ========================================================= */
+function setupLightbox() {
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); lightboxNext(); });
+  document.getElementById('lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); lightboxPrev(); });
+  document.addEventListener('keydown', (e) => {
+    if (document.getElementById('lightbox').classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') lightboxNext();
+    if (e.key === 'ArrowLeft') lightboxPrev();
+  });
+}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  setupRevealObserver();
+  populateStaticSlots();
+  populateHomePage();
+  populateServicesPage();
+  populateArtistsPage();
+  populateTestimonialsPage();
+  populateContactPage();
+  populateFooter();
+  setupNavbar();
+  setupLightbox();
+
+  window.addEventListener('hashchange', router);
+  router();
+});
+</script>
+</body>
+</html>
